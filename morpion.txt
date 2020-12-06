@@ -1,0 +1,99 @@
+
+
+Ecrire un algorithme du jeu du morpion
+L’ordinateur demande à l’utilisateur dans quelle case il veut jouer.
+On vérifie si la case a déjà été jouée.
+Les caractères à utiliser sont X ou O.
+jusqu'à former une ligne, colonne ou diagonale
+
+
+
+variable table[3,3];etatDePartie←partieEnCours
+
+    remplirTableauVide();
+  variable joueur←j1
+    
+    tant que (etatDePartie==partieEnCours)
+        tourDeJeu(tableau)
+        etatDeParti←testVictoire(tableau);
+        testMatchNul(tableau)
+        si (etatDePartie==partieEnCours)
+          alors afficher "c'est au " +joueur+"de jouer"
+        fsi
+    fin tant que
+    si (etatDePartie==v1)
+      afficher"victoire joueur 1"
+    fsi
+    si(etatDePartie==v2)
+     afficher"victoire joueur 1"
+   
+
+fonction tourDeJeu(table)
+    afficher entrer col et ligne
+      lire col et ligne
+        si (table[col,ligne]==0)&& (joueur=="j1")
+         alors table [col,ligne]=1
+        joueur ←"j2"
+        fsi
+        sinon si (table[col,ligne]=0)&& (joueur=="j2")
+            alors table [col,ligne]=-1
+            joueur ←"j1"
+        fsi
+        sinon 
+        afficher recommencer 
+            tourDeJeu(tableau)
+            
+
+        fin sinon
+       
+
+fonction testVictoire(tableau[])
+variables i,j,,result
+
+    pour i de 0 à 2 par pas de 1   
+            
+            si ((table[0,i]+table[1,i]+table[2,i] == 3)||(table[i,0]+table[i,1]+table[i,2] == 3))
+              result←"v1"
+            sinon si ((table[0,i]+table[1,i]+table[2,i]==-3)||(table[i,0]+table[i,1]+table[i,2] ==-3))
+                result←"v2"
+              fsinon
+            fsi
+    fin pour
+
+  si (tab[0,0]+tab[1,0]+tab[1,0]==3)||(tab[2,0]+tab[1,1]+tab[0,2]==3)
+      
+      result←"v1"
+  fsi
+  sinon si (tab[0,0]+tab[1,0]+tab[1,0]==-3)||(tab[2,0]+tab[1,1]+tab[0,2]==-3)
+  
+      result←"v2"
+  fsi
+
+  
+  sinon si (result!=1)
+   result←partieEnCours
+   fin sinon
+  renvoie result
+ fin fonction
+
+// 
+fonction remplirTableauVide()
+    pour j de 0 a 2 par pas de 1
+     pour i de 0 à 2 par pas de 1
+        
+           table[j,i]←0
+    fin pour
+fin pour
+fonction testMatchNul(table){
+  pour i de 0 à 2 par pas de 1
+    pour j de 0 à 2 par pas de 1
+      si (table[j,i]!=0
+        caseJouee++
+        si caseJouee=9
+          afficher "match nul"
+          etatDePartie="match nul"
+         
+}
+
+
+
